@@ -1,6 +1,5 @@
 {
-  "version": 2,
-  "buildCommand": "vite build",
+  "buildCommand": "npx vite build",
   "outputDirectory": "dist/public",
   "routes": [
     {
@@ -51,8 +50,5 @@
     "api/stats.ts": {
       "maxDuration": 5
     }
-  },
-  "env": {
-    "NODE_ENV": "production"
   }
 }
