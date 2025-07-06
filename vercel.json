@@ -1,0 +1,65 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "client/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/script.lua",
+      "dest": "/api/script.lua"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/real-home",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "functions": {
+    "api/protect.ts": {
+      "maxDuration": 10
+    },
+    "api/generate.ts": {
+      "maxDuration": 10
+    },
+    "api/script.ts": {
+      "maxDuration": 5
+    },
+    "api/script.lua.ts": {
+      "maxDuration": 5
+    },
+    "api/my-scripts.ts": {
+      "maxDuration": 10
+    },
+    "api/my-scripts-post.ts": {
+      "maxDuration": 10
+    },
+    "api/my-scripts/[id].ts": {
+      "maxDuration": 10
+    },
+    "api/update-script.ts": {
+      "maxDuration": 10
+    },
+    "api/delete-script.ts": {
+      "maxDuration": 10
+    },
+    "api/stats.ts": {
+      "maxDuration": 5
+    }
+  },
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
